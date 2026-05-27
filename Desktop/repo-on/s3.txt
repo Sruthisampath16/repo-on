@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Resources": {
+  "Resources": { Amazons3BucketReadOnly
     "MyS3Bucket": {
       "Type": "AWS::S3::Bucket"
     }
