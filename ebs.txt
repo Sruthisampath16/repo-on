@@ -1,0 +1,75 @@
+  Device management System  Linux
+
+    1 lsblk -l
+    2  mkfs -t
+    3  mkfs -t ext4 /dev/nvme1n1
+    4  mkdir -p /mnt/dd
+    5  mount /dev/nvme1n1 /mnt/dd
+    6  df -h
+
+
+Notes
+
+Ec2  linux instance 
+|
+Ebs volume[ ebs – general purpose] –[ we can increase /modify the size of the ebs in running]
+|     *same availability zone
+Ebs Volume [attaching  an additional ebs volume with running instance
+
+EBS ->volumes -> create volume
+
+Two ways:
+1)	Volumes attached with ec2 instance using aws console
+2)	Once it is attached take the remote of the ec2 linux and mount that additional volume using the linux commands and after mounting it you can use it
+3)	Once partition is created you will format the partition (providing file system for new block device)
+4)	Now you will create a directory in linux to mount the volume 
+5)	Once the volume is mounted now you can use it newly attached volume
+
+
+bootstrapping
+#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+
+#!/bin/bash
+sudo su -
+yum install httpd -y
+systemctl start httpd.service
+systemctl enable httpd.service
+cd /var/www/html
+echo "this is my apache server to bootstrap" >index.html
+
+
+mouting efs in ec2 
+ comments
+pwd
+    2  mkdir efs
+    3  cd ..
+    4  yum list all | grep amazon-efs-utils
+    5  yum install amazon-efs-utils
+    6  ls -l
+    7  mount -s | grep efs
+    8  sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.1.183:/ efs
+    9  mkdir efs
+   10  sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.1.183:/ efs
+   11  mount -s | grep efs
+   12  cd efs
+   13  ls -l
+   14  cp /etc/hosts.allow
+   15  cp/etc/hosts.allow
+   16  copy /etc/hosts.allow
+   17  df -h
+   18  touch file
+   19  touch file (1:4)
+   20  touch file(1:4)
+   21  touch tfile(1:4)
+   22  touch tfile('1:4')
+   23  touch "tfile(1:4)"
+   24  ls -l
+   25  echo "my file" > file
+   26  ls -l
+   27  df -h
+   28  cp /etc /filehost.allow
+   29  cp /etc/hosts.allow /tmp/
+   30  ls /etc/hosts.allow
